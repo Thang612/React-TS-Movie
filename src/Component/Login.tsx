@@ -22,7 +22,7 @@ const Login = () => {
                 mail: result?.user.email 
             }));
 
-            nav('/admin/movie/add');
+            nav('/admin/');
             console.log("Login success:", result?.token, result?.user.email);
             // TODO: redirect / lưu state / navigate
         } else {
@@ -33,11 +33,11 @@ const Login = () => {
 
     return (
 
-        <div className="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+        <div className="relative flex min-h-screen bg-gray-700 text-gray-200 antialiased flex-col justify-center overflow-hidden  py-6 sm:py-12">
             <div className="relative py-3 sm:w-96 mx-auto text-center">
                 <span className="text-2xl font-light ">Login to your account</span>
-                <div className="mt-4 bg-white shadow-md rounded-lg text-left">
-                    <div className="h-2 bg-orange-400 rounded-t-md"></div>
+                <div className="mt-4 bg-gray-800 shadow-md rounded-lg text-left">
+                    <div className="h-2 bg-orange-500 rounded-t-md"></div>
                     <div className="px-8 py-6 ">
                         <label className="block font-semibold"> Username or Email </label>
                         <input value={email} onChange={(e) => { setEmail(e.target.value) }} type="text" placeholder="Email" className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" />

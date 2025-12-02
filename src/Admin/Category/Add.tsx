@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { getAuth } from "firebase/auth";
 import { addACategory } from "../../Services/MovieService";
 import { toast } from "react-toastify";
 
@@ -9,13 +8,7 @@ const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const auth = getAuth();
-
   const handleAddCategory = async () => {
-    if (!auth.currentUser) {
-      alert("You must be logged in to add a category");
-      return;
-    }
 
     if (!categoryName.trim()) return;
 

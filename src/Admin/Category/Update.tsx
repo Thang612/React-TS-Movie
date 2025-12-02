@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
+import { useState } from "react";
 import { updateCategory } from "../../Services/MovieService";
 import { toast } from "react-toastify";
 
@@ -12,21 +11,8 @@ const UpdateCategory = ({ categoryId, categoryName }: Props) => {
     const [newCategory, setNewCategory] = useState(categoryName)
     const [loading, setLoading] = useState(false);
 
-    const auth = getAuth();
-      useEffect(()=>{
-            console.log(">>>Check props: ",categoryId, categoryName)
-        },[])
-
     const handleUpdateCategory = async () => {
-        if (!auth.currentUser) {
-            alert("You must be logged in to add a category");
-            return;
-        }
-
         if (!categoryName.trim()) return;
-
-
-      
 
         setLoading(true);
         try {

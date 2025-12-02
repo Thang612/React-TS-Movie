@@ -33,23 +33,29 @@ const ListCategories = () => {
         }
     }
 
-    const handleDeleteCategory = async(id:string)=>{
-        try{
-            await deleteCategory(id);
-            toast.success("Delete Category Successfull")
-            setCategories(categories.filter(item => item.id !== id ))
-        }catch(err){
-            toast.error("Fail delete category")
-        }
+    const handleDeleteCategory = async (cat: Category) => {
+    try {
+        const isConfirm = window.confirm(`Delete category: ${cat.name}?`);
+        if (!isConfirm) return;
+
+        await deleteCategory(cat.id);
+        toast.success("Delete Category Successfully");
+
+        setCategories(prev => prev.filter(item => item.id !== cat.id));
+    } catch (err) {
+        toast.error("Fail delete category");
     }
+};
+
 
     const handelEditCategory = (cat : Category)=>{
         setIsShowModal(true);
         setCategoryId(cat.id);
         setCategoryName(cat.name);
     }
-    const handleCloseModal = ()=>{
+    const handleCloseModal =async ()=>{
         setIsShowModal(false);
+        await addAllCategories();
     }
 
     return (
@@ -71,7 +77,7 @@ const ListCategories = () => {
                             <td>{cat.name}</td>
                             <td>
                                 <button type="button" className="text-white px-5 py-2 rounded-sm bg-blue-600 mr-4 hover:bg-blue-700" onClick={()=>handelEditCategory(cat)}>Edit</button>
-                                <button type="button" className="text-white px-5 py-2 rounded-sm bg-red-500 hover:bg-red-600" onClick={()=>handleDeleteCategory(cat.id)}>Delete</button>
+                                <button type="button" className="text-white px-5 py-2 rounded-sm bg-red-500 hover:bg-red-600" onClick={()=>handleDeleteCategory(cat)}>Delete</button>
                             </td>
                         </tr>
                  

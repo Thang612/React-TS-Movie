@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from './store';
 
 const initialState = {
   token: '',
@@ -21,7 +22,9 @@ export const userSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
+// Action creators are generated for each case redu cer function
 export const { LOGIN, LOGOUT } = userSlice.actions
+
+export const selectMail = (state: RootState) => state.userReducer.mail;
 
 export default userSlice.reducer
