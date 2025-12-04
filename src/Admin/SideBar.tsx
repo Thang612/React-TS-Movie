@@ -26,7 +26,7 @@ const SideBar = () => {
   }
 
   return (
-    <div className="w-64 flex flex-col justify-between sticky top-0 left-0  min-h-screen bg-gray-900 text-gray-200 px-4 py-6  shadow-xl shadow-slate-400">
+    <div className="animate__animated animate__fadeInLeft w-64 flex flex-col justify-between sticky top-0 left-0  min-h-screen bg-gray-900 text-gray-200 px-4 py-6  shadow-xl shadow-slate-400">
       <div>
         <h2 className="text-2xl font-bold mb-8 text-white">🎬 Movie Admin</h2>
 

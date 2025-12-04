@@ -22,7 +22,7 @@ const Login = () => {
                 mail: result?.user.email 
             }));
 
-            nav('/admin/');
+            nav('/admin');
             console.log("Login success:", result?.token, result?.user.email);
             // TODO: redirect / lưu state / navigate
         } else {
@@ -32,11 +32,11 @@ const Login = () => {
     };
 
     return (
-
-        <div className="relative flex min-h-screen bg-gray-700 text-gray-200 antialiased flex-col justify-center overflow-hidden  py-6 sm:py-12">
-            <div className="relative py-3 sm:w-96 mx-auto text-center">
+<>
+        <div className="relative flex min-h-screen bg-gray-600 text-gray-200 antialiased flex-col justify-center overflow-hidden  py-6 sm:py-12">
+            <div className="relative py-3 sm:w-96 mx-auto text-center animate__animated animate__backInUp">
                 <span className="text-2xl font-light ">Login to your account</span>
-                <div className="mt-4 bg-gray-800 shadow-md rounded-lg text-left">
+                <div className="mt-4 bg-gray-700 shadow-md rounded-lg text-left">
                     <div className="h-2 bg-orange-500 rounded-t-md"></div>
                     <div className="px-8 py-6 ">
                         <label className="block font-semibold"> Username or Email </label>
@@ -52,6 +52,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

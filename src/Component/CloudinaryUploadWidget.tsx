@@ -21,25 +21,20 @@ const CloudinaryUploadWidget: React.FC<CloudinaryUploadWidgetProps> = ({
   const widgetRef = useRef<any>(null);
 
   useEffect(() => {
-    if (!window.cloudinary) return;
+  if (!window.cloudinary || widgetRef.current) return;
 
-    // Tạo widget CHỈ 1 lần
-    widgetRef.current = window.cloudinary.createUploadWidget(
-      {
-        cloudName,
-        uploadPreset,
-      },
-      (error: any, result: any) => {
-        if (!error && result && result.event === "success") {
-          onUpload?.(result.info);
-        }
+  widgetRef.current = window.cloudinary.createUploadWidget(
+    {
+      cloudName,
+      uploadPreset,
+    },
+    (error: any, result: any) => {
+      if (!error && result && result.event === "success") {
+        onUpload?.(result.info);
       }
-    );
-
-    return () => {
-      widgetRef.current = null;
-    };
-  }, [cloudName, uploadPreset, onUpload]);
+    }
+  );
+}, []); 
 
   const openWidget = () => {
     widgetRef.current?.open();

@@ -6,18 +6,20 @@ import AddCategory from "./Add";
 const PageCategory = () => {
     const [isShowModal, setIsShowModal] = useState(false);
 
-    const handleCloseModal = ()=>{
-        console.log("dsad")
+    const handleCloseModal = () => {
         setIsShowModal(false);
     }
 
     return (<>
-        <h1 className="my-4 font-semibold text-2xl text-gray-200"> <i className="fa-regular fa-folder-open"></i> Categories</h1>
-        <button onClick={()=>setIsShowModal(true)} data-modal-target="default-modal" data-modal-toggle="default-modal" className="my-5 text-white bg-orange-500  rounded-sm box-border border border-transparent hover:bg-orange-600 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
-            Add new category
-        </button>
+        <div className="flex justify-between">
+            <h1 className="my-4 font-semibold text-2xl text-gray-200"> <i className="fa-regular fa-folder-open"></i> Categories</h1>
+            <button onClick={() => setIsShowModal(true)} data-modal-target="default-modal" data-modal-toggle="default-modal" className="my-5 text-white bg-orange-500  rounded-sm box-border border border-transparent hover:bg-orange-600 focus:ring-4 focus:ring-brand-medium shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none" type="button">
+                Add new category
+            </button>
+        </div>
+
         <ListCategories />
-        {isShowModal && <Modal title="Add Category" children={<AddCategory/>} handleCloseModal={handleCloseModal}/>}
+        {isShowModal && <Modal title="Add Category" children={<AddCategory />} handleCloseModal={handleCloseModal} />}
     </>)
 }
 export default PageCategory;
